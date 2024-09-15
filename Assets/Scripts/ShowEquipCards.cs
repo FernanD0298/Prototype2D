@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,17 +16,34 @@ public class ShowEquipCards : MonoBehaviour
     public Transform UITransform;
     public Transform ParentAfterDrag;
     public Transform ParentBox;
+
+    [Header("Preview Info")] 
+    public TextMeshProUGUI DamagePreview;
+    public TextMeshProUGUI SpeedPreview;
+    public TextMeshProUGUI LifePreview;
     
-    void Start()
+
+    private void OnEnable()
     {
         List<Cards> CardsList = InventoryManager.Instance.CardsList;
         SetupCards(CardsList);
+    }
+
+    private void OnDisable()
+    {
+        foreach (Transform Child in ParentBox)
+        {
+            Destroy(Child.gameObject);
+        }
     }
 
     void SetupCards(List<Cards> CardsList)
     {
         for (int i = 0; i < CardsList.Count; i++)
         {
+            if(CardsList[i].BelongsToPlayerID != InventoryManager.Instance.CurrentCharacterID)
+                continue;
+            
             if(InventoryManager.Instance.CardEquipped1.ID != 0)
                 if (InventoryManager.Instance.CardEquipped1.ID == CardsList[i].ID)
                 {
@@ -41,6 +60,9 @@ public class ShowEquipCards : MonoBehaviour
             GameObject Card = Instantiate(CardPrefab, CardBox, true);
             SetupCardInfo CardInfo = Card.GetComponent<SetupCardInfo>();
             CardInfo.CardInfo = CardsList[i];
+            CardInfo.DamagePreview = DamagePreview;
+            CardInfo.LifePreview = LifePreview;
+            CardInfo.SpeedPreview = SpeedPreview;
 
             DraggableItem Item = Card.GetComponent<DraggableItem>();
             Item.ParentBox = ParentBox;

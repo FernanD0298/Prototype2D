@@ -46,73 +46,197 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters:
   - ID: 1
+    Name: Character 1
+    Image: {fileID: 2800000, guid: 5b4b5bb559abd044791dedff1b79315e, type: 3}
     PlayerPref: {fileID: 727566601386411349, guid: 5b43c28ed30262c4c8f64cd0e96b64f0,
       type: 3}
     WeaponInfo:
       DamageUpgradeValue: 2
-      SpeedUpgradeValue: 5
-      KnockBackUpgradeValue: 7
-      DamageInitialStat: 2
-      SpeedInitialStat: 10
-      KnockBackInitialStat: 10
+      SpeedUpgradeValue: 50
+      KnockBackUpgradeValue: 0.2
+      DamageLevel: 1
+      SpeedLevel: 1
+      KnockBackLevel: 1
+      DamagePrice: 15
+      SpeedPrice: 5
+      KnockBackPrice: 10
+      DamageInitialStat: 5
+      SpeedInitialStat: 200
+      KnockBackInitialStat: 0.2
     Weapon:
-      DamageValue: 0
-      SpeedValue: 0
-      KnockBackValue: 0
+      Name: Torch
+      Image: {fileID: 2800000, guid: 68e1f3d1470827b49b3b3347af0e4f6d, type: 3}
+      DamageValue: 5
+      SpeedValue: 200
+      KnockBackValue: 0.2
+      Description: Weapon of Character 1
     CharacterInfo:
-      DamageValue: 0
-      SpeedValue: 0
-      LifeValue: 0
-    Description: Player 1
+      DamageValue: 2
+      SpeedValue: 5
+      LifeValue: 100
+    Description: Character 1 description
   - ID: 2
+    Name: Character 2
+    Image: {fileID: 2800000, guid: a31b80b129768c647af8a375fe0a00a1, type: 3}
     PlayerPref: {fileID: 1882752185066371776, guid: b1f7b4dea0bdabc429d7908e111b5496,
       type: 3}
     WeaponInfo:
-      DamageUpgradeValue: 2
-      SpeedUpgradeValue: 5
-      KnockBackUpgradeValue: 7
-      DamageInitialStat: 2
-      SpeedInitialStat: 10
-      KnockBackInitialStat: 10
+      DamageUpgradeValue: 3
+      SpeedUpgradeValue: 1
+      KnockBackUpgradeValue: 0.3
+      DamageLevel: 1
+      SpeedLevel: 1
+      KnockBackLevel: 1
+      DamagePrice: 20
+      SpeedPrice: 2
+      KnockBackPrice: 15
+      DamageInitialStat: 10
+      SpeedInitialStat: 120
+      KnockBackInitialStat: 0.4
     Weapon:
-      DamageValue: 0
-      SpeedValue: 0
-      KnockBackValue: 0
+      Name: Shovel
+      Image: {fileID: 2800000, guid: 279ff480381111b40b99a9cb298a5fd3, type: 3}
+      DamageValue: 10
+      SpeedValue: 120
+      KnockBackValue: 0.4
+      Description: Weapon of Character 2
     CharacterInfo:
-      DamageValue: 0
-      SpeedValue: 0
-      LifeValue: 0
-    Description: Player 2
+      DamageValue: 3
+      SpeedValue: 2
+      LifeValue: 50
+    Description: Character 2 description
+  - ID: 2
+    Name: Character 2
+    Image: {fileID: 2800000, guid: a31b80b129768c647af8a375fe0a00a1, type: 3}
+    PlayerPref: {fileID: 1882752185066371776, guid: b1f7b4dea0bdabc429d7908e111b5496,
+      type: 3}
+    WeaponInfo:
+      DamageUpgradeValue: 3
+      SpeedUpgradeValue: 1
+      KnockBackUpgradeValue: 0.3
+      DamageLevel: 1
+      SpeedLevel: 1
+      KnockBackLevel: 1
+      DamagePrice: 20
+      SpeedPrice: 2
+      KnockBackPrice: 15
+      DamageInitialStat: 10
+      SpeedInitialStat: 120
+      KnockBackInitialStat: 0.4
+    Weapon:
+      Name: Shovel
+      Image: {fileID: 2800000, guid: 279ff480381111b40b99a9cb298a5fd3, type: 3}
+      DamageValue: 10
+      SpeedValue: 120
+      KnockBackValue: 0.4
+      Description: Weapon of Character 2
+    CharacterInfo:
+      DamageValue: 3
+      SpeedValue: 2
+      LifeValue: 50
+    Description: Character 2 description
   CardsList:
   - ID: 1
+    Name: Card 1
+    Description: Card 1 description
+    BelongsToPlayerID: 1
     Image: {fileID: 2800000, guid: 7972dd97521bb1c44ba8e3774391b996, type: 3}
     CardLevel: 1
     CardUpgradeValue: 1
-    Upgrade: 1
+    Upgrade: 10
     UpgradeStat: 0
     Downgrade: -1
     DowngradeStat: 1
   - ID: 2
+    Name: Card 2
+    Description: Card 2 description
+    BelongsToPlayerID: 1
     Image: {fileID: 2800000, guid: 1c82fa18a9230df4f9a0aa981fe3a341, type: 3}
     CardLevel: 1
     CardUpgradeValue: 2
     Upgrade: 2
     UpgradeStat: 1
-    Downgrade: -2
+    Downgrade: -1
     DowngradeStat: 2
   - ID: 3
+    Name: Card 3
+    Description: Card 3 description
+    BelongsToPlayerID: 1
     Image: {fileID: 2800000, guid: 6b22156af64babe4f9bff6441c5b942f, type: 3}
     CardLevel: 1
     CardUpgradeValue: 3
     Upgrade: 3
     UpgradeStat: 1
-    Downgrade: -2
+    Downgrade: -10
     DowngradeStat: 0
   - ID: 4
+    Name: Card 4
+    Description: Card 4 description
+    BelongsToPlayerID: 2
     Image: {fileID: 2800000, guid: 1a58749f555f75e48baa41893215b26e, type: 3}
     CardLevel: 1
     CardUpgradeValue: 2
-    Upgrade: 4
+    Upgrade: 15
     UpgradeStat: 0
     Downgrade: -3
     DowngradeStat: 2
+  - ID: 5
+    Name: Card 5
+    Description: Card 5 description
+    BelongsToPlayerID: 2
+    Image: {fileID: 2800000, guid: 4408269a96438e84796304f4ac0ed623, type: 3}
+    CardLevel: 1
+    CardUpgradeValue: 3
+    Upgrade: 15
+    UpgradeStat: 0
+    Downgrade: -3
+    DowngradeStat: 2
+  - ID: 6
+    Name: Card 6
+    Description: Card 6 description
+    BelongsToPlayerID: 2
+    Image: {fileID: 2800000, guid: 988aad686dc1fec48bbc0dee20cead64, type: 3}
+    CardLevel: 1
+    CardUpgradeValue: 1
+    Upgrade: 20
+    UpgradeStat: 0
+    Downgrade: -2
+    DowngradeStat: 2
+  - ID: 7
+    Name: Card 7
+    Description: Card 7 description
+    BelongsToPlayerID: 2
+    Image: {fileID: 2800000, guid: c8303e833b0ef184e99c1bc8940fff84, type: 3}
+    CardLevel: 1
+    CardUpgradeValue: 5
+    Upgrade: 25
+    UpgradeStat: 0
+    Downgrade: -3
+    DowngradeStat: 2
+  GachaInfo:
+  - BannerID: 1
+    CardsInBanner:
+    - CardID: 1
+      Probability: 26
+    - CardID: 2
+      Probability: 26
+    - CardID: 3
+      Probability: 26
+    - CardID: 4
+      Probability: 11
+    - CardID: 5
+      Probability: 11
+    Price: 10
+  - BannerID: 2
+    CardsInBanner:
+    - CardID: 3
+      Probability: 8
+    - CardID: 4
+      Probability: 23
+    - CardID: 5
+      Probability: 23
+    - CardID: 6
+      Probability: 23
+    - CardID: 7
+      Probability: 23
+    Price: 20

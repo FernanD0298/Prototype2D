@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -28,8 +29,14 @@ public class PlayerHealth : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             gameObject.SetActive(false);
+            SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
         }
 
         HealthSlider.value = CurrentHealth;
+    }
+
+    public void UpdateCurrentHealth()
+    {
+        CurrentHealth = MaxHealth;
     }
 }

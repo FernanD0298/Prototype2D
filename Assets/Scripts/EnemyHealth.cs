@@ -44,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
                 GameObject ItemToDrop = DropItems[Random.Range(1, DropItems.Count) - 1];
                 Instantiate(ItemToDrop, gameObject.transform.position, quaternion.identity);
             }
+            FindObjectOfType<EnemySpawner>().KilledEnemies.Add(this.gameObject);
             
             Destroy(gameObject);
         }

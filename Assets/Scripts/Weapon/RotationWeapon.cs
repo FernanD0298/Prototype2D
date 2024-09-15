@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TorchWeapon : MonoBehaviour
+public class RotationWeapon : MonoBehaviour
 {
     public float RotateSpeed;
     

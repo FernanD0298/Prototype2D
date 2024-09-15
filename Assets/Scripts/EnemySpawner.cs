@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject EnemyToSpawn;
-
-    public float TimeToSpawn;
     private float SpawnCounter;
 
     public Transform MinSpawn, MaxSpawn;
@@ -16,15 +14,14 @@ public class EnemySpawner : MonoBehaviour
     private GameObject Player;
 
     private List<GameObject> SpawnedEnemies = new List<GameObject>();
+    public List<GameObject> KilledEnemies = new List<GameObject>();
 
     public List<WaveInfo> Waves;
-    private int CurrentWave;
+    private int CurrentWave = 0;
     private float WaveCounter;
 
     void Start()
     {
-        SpawnCounter = TimeToSpawn;
-
         Player = GameObject.FindGameObjectWithTag("Player");
         if (Player != null)
         {
@@ -47,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (Player.activeSelf)
         {
-            if (CurrentWave < Waves.Count && CurrentWave > 0)
+            if (CurrentWave < Waves.Count && CurrentWave >= 0)
             {
                 WaveCounter -= Time.deltaTime;
                 if (WaveCounter <= 0)
@@ -66,9 +63,20 @@ public class EnemySpawner : MonoBehaviour
                     SpawnedEnemies.Add(NewEnemy);
                 }
             }
+            else
+            {
+                if (KilledEnemies.Count == SpawnedEnemies.Count)
+                    StartCoroutine(ReturnLobby());
+            }
         }
 
         transform.position = Target.position;
+    }
+
+    IEnumerator ReturnLobby()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
     }
 
     private void GoToNextWave()
@@ -80,8 +88,11 @@ public class EnemySpawner : MonoBehaviour
             CurrentWave = -1;
         }
 
-        WaveCounter = Waves[CurrentWave].WaveLenght;
-        SpawnCounter = Waves[CurrentWave].TimeBetweenSpawn;
+        if (CurrentWave >= 0)
+        {
+            WaveCounter = Waves[CurrentWave].WaveLenght;
+            SpawnCounter = Waves[CurrentWave].TimeBetweenSpawn;
+        }
     }
 
     private Vector3 SelectSpawnPoint()

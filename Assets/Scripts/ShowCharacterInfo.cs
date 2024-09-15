@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,12 +15,11 @@ public class ShowCharacterInfo : MonoBehaviour
 
     private InventoryManager InventoryManager;
     Character Character;
-    
-    void Start()
+
+    private void OnEnable()
     {
         InventoryManager = global::InventoryManager.Instance;
         
-
         for (int i = 0; i < InventoryManager.Characters.Count; i++)
         {
             if (InventoryManager.Characters[i].ID == InventoryManager.CurrentCharacterID)
@@ -97,5 +97,19 @@ public class ShowCharacterInfo : MonoBehaviour
     {
         int NewValue = int.Parse(Life.text) + ExtraValue;
         Life.text = NewValue.ToString();
+    }
+
+    public void UpdatePlayerStats()
+    {
+        int NewSpeed = int.Parse(Speed.text);
+        int NewDamage = int.Parse(Damage.text);
+        int NewLife = int.Parse(Life.text);
+
+        InventoryManager.CurrentCharacterInfo.CharacterInfo.SpeedValue = NewSpeed;
+        InventoryManager.CurrentCharacterInfo.CharacterInfo.LifeValue = NewLife;
+        InventoryManager.CurrentCharacterInfo.CharacterInfo.DamageValue = NewDamage;
+        
+        InventoryManager.UpdateCharacterStat();
+        InventoryManager.UpdateWeaponStats();
     }
 }
